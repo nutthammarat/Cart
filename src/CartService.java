@@ -17,7 +17,6 @@ public class CartService {
         User user = UserService.getUser("user1");
         DefaultListModel listModel = new DefaultListModel();
         ArrayList<Cart> list = CartService.getAllProduct(user);
-        
         for(Cart e : list)
             listModel.addElement(e.toString());
         CartPage.list1.setModel(listModel);

@@ -18,8 +18,8 @@ public class CartPage extends javax.swing.JFrame {
      */
     public CartPage() {
         initComponents();
-        CartService.showList();
-        //artDao.showAllProductInCart();
+       // CartService.showList();
+        
     }
 
     /**
@@ -147,6 +147,7 @@ public class CartPage extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CartPage().setVisible(true);
+                CartService.showList();
             }
         });
     }

@@ -27,6 +27,9 @@ public class CartService {
        CartDao.deleteProduct(user,ProductService.getProduct(id));
        showList();
     }
-
+public static void showCart(){
+        CartPage cart = new CartPage();
+        cart.setVisible(true);
+    }
    
 }

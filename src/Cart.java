@@ -32,4 +32,9 @@ public class Cart {
     public void setNum(int num) {
         this.num = num;
     }
+    
+    public String toString(){
+        return product.getId() + " " + product.getName() + " " + product.getBrand() + " "+ product.getColor()+
+                " " + product.getPrice();
+    }
 }

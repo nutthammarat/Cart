@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,6 +18,8 @@ public class CartPage extends javax.swing.JFrame {
      */
     public CartPage() {
         initComponents();
+        CartService.showList();
+        //artDao.showAllProductInCart();
     }
 
     /**
@@ -33,9 +38,11 @@ public class CartPage extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        list1 = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        sumtxt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(589, 422));
@@ -54,7 +61,7 @@ public class CartPage extends javax.swing.JFrame {
 
         jButton5.setText("ยืนยันการสั่งสินค้า");
         getContentPane().add(jButton5);
-        jButton5.setBounds(461, 350, 120, 23);
+        jButton5.setBounds(440, 330, 130, 23);
 
         jButton6.setText("Back");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -69,18 +76,29 @@ public class CartPage extends javax.swing.JFrame {
         getContentPane().add(jButton7);
         jButton7.setBounds(440, 20, 73, 23);
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(list1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 100, 500, 180);
+        jScrollPane1.setBounds(30, 100, 410, 180);
 
         jButton1.setText("ลบสินค้า");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
-        jButton1.setBounds(370, 350, 73, 23);
+        jButton1.setBounds(360, 330, 73, 23);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(390, 60, 110, 20);
+
+        jLabel3.setText("ราคารวม : ");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(420, 290, 50, 20);
+        getContentPane().add(sumtxt);
+        sumtxt.setBounds(470, 290, 70, 20);
 
         pack();
         setLocationRelativeTo(null);
@@ -89,6 +107,14 @@ public class CartPage extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        ArrayList<Cart> list = CartService.getAllProduct(UserService.getUser("user1"));
+        int i =  list1.getSelectedIndex();
+        String id = list.get(i).getProduct().getId();
+        CartService.deleteProduct(id);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,8 +159,10 @@ public class CartPage extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JList<String> list1;
+    public static javax.swing.JLabel sumtxt;
     // End of variables declaration//GEN-END:variables
 }

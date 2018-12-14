@@ -48,6 +48,5 @@ public abstract class ProductService {
             //MainPage.x1.setText(""+product1.getImage());
             i++;
         }
-
     }
 }

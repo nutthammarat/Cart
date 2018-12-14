@@ -313,7 +313,7 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void cartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartBtnActionPerformed
-        //MainpageService.showCart();
+        CartPageService.showCart();
         
     }//GEN-LAST:event_cartBtnActionPerformed
 

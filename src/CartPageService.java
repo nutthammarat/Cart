@@ -32,5 +32,9 @@ public abstract class CartPageService {
            
     }
     abstract public void showPayment();
+    public static void showCart(){
+        CartPage cart = new CartPage();
+        cart.setVisible(true);
+    }
 
 }
